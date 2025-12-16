@@ -1,7 +1,7 @@
 pipeline{
     agent { label 'build-node' }
     tools{
-        jdk 'jdk'
+        jdk 'jdk-21'
         nodejs 'node17'
     }
     environment {
@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git branch: 'main', url: 'https://github.com/Ganil151/amazon-prime-video-kubernetes.git'
+                git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/Ganil151/amazon-prime-video-kubernetes.git'
             }
         }
         stage("Sonarqube Analysis "){
