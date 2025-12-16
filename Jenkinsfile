@@ -1,7 +1,7 @@
 pipeline{
     agent { label 'build-node' }
     tools{
-        jdk 'jdk-21'
+        jdk 'jdk-17'
         nodejs 'node17'
     }
     environment {

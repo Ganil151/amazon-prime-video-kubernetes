@@ -1,8 +1,8 @@
 pipeline{
     agent { label 'build-node' }
     tools{
-        jdk 'jdk-21'
-        nodejs 'Node16'
+        jdk 'jdk-17'
+        nodejs 'Node17'
     }
     environment {
         SCANNER_HOME=tool 'sonar-scanner'
@@ -20,7 +20,7 @@ pipeline{
         }
         stage("Sonarqube Analysis "){
             steps{
-                withSonarQubeEnv('sonar-server') {
+                withSonarQubeEnv('SonarQube') {
                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Hotstar \
                     -Dsonar.projectKey=Hotstar '''
                 }
